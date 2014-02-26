@@ -11,3 +11,4 @@ Petya.hello(Petya);
 log(db.getPhrases("Run successful"));
 
 //git comment
+//git comment 2
