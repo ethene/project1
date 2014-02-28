@@ -1,5 +1,6 @@
 var http = require('http');
 var url = require('url');
+var log = require('./log')(module);
 
 var server = new http.Server();
 
@@ -9,7 +10,7 @@ var emit=server.emit;
 
 server.emit = function (event)
 {
-    console.log(event);
+    log.info(event);
     emit.apply(server, arguments);
 };
 
@@ -17,7 +18,7 @@ server.emit = function (event)
 server.on('request', function(req, res){
 
    urlParsed = url.parse(req.url, true);
-   console.log(req.headers);
+   log.debug(req.headers);
 
    if (urlParsed.pathname == '/echo' && urlParsed.query.message)
    {
